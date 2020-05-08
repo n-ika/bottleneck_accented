@@ -17,12 +17,4 @@ for filepath in glob.iglob(FOLDER + '/*/*.wav', recursive=True):
     mfcc_feat = mfcc(sig,rate)
     features[wav_file] = [mfcc_feat]
 
-df = pd.DataFrame.from_dict(features, orient='index')
-
-d = dict()
-for key in features:
-    # access every features object
-    feats = features[key]
-    d[key] = [feats]
-
-df.to_csv('./out_feats.csv')
+np.save("mfccs.npy", features)
