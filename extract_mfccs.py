@@ -8,10 +8,10 @@ from python_speech_features import mfcc
 import scipy.io.wavfile as wav
 import glob
 
-folder="/Users/nika/Desktop/corpus_accent"
+FOLDER = sys.argv[1] # stimuli in .wav
 
 features = {}
-for filepath in glob.iglob(folder + '/*/*.wav', recursive=True):
+for filepath in glob.iglob(FOLDER + '/*/*.wav', recursive=True):
     wav_file = filepath.split('/')[-1]
     (rate,sig) = wav.read(filepath)
     mfcc_feat = mfcc(sig,rate)
