@@ -17,4 +17,6 @@ for filepath in glob.iglob(FOLDER + '/*/*.wav', recursive=True):
     mfcc_feat = mfcc(sig,rate)
     features[wav_file] = [mfcc_feat]
 
-np.save("mfccs.npy", features)
+f = open("mfcc.pkl","wb")
+pickle.dump(features, f)
+f.close()
